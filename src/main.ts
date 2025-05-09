@@ -5,13 +5,17 @@ import 'dotenv/config';
 import fetch from 'node-fetch';
 import { AI_API_URL, CREATOR, LINKS, LINKS_TEXT, OFFICIAL_PROFILES, TECNOLOGIES } from './vars';
 import { isAboutCreator, isAboutLinks, isAboutOneLink, isAboutprofiles, isAboutTecnologies, isHelloMessgae } from './context_verification';
+import express from "express"
+
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const client = new Client({
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
 });
-
 client.on('qr', (qr: string) => {
     QRCode.toDataURL(qr, function (err: any, url) {
         console.log("Abra esse link no navegador para escanear o QR:");
@@ -78,4 +82,12 @@ async function processarComIA(text: string, name: string): Promise<string> {
     return await response.text();
 }
 
-client.initialize();
+
+
+
+const app = express(); // Inicializando o aplicativo Express
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    client.initialize();
+    console.log(`Servidor rodando em ${PORT}`);
+});
