@@ -4,11 +4,10 @@ Chat de IA utilizando Ollama localmente com Python para responder perguntas de u
 ## Converse com: +55 11 98595-6209
 Para usar, basta iniciar uma conversa com: https://wa.me/5511985956209
 
-![image](https://github.com/user-attachments/assets/5105de0d-caaa-487e-a281-1712b086f5e6)
-
-
 ## Backend
 Baixe o backend em: https://github.com/JoaoEnrique/chat-inteligencia-artificial
+
+![image](https://github.com/user-attachments/assets/5105de0d-caaa-487e-a281-1712b086f5e6)
 
 ## Tecnologias Utilizadas
 - **Node com TypeScript**: Integração com WhatsApp
